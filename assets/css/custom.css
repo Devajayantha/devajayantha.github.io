@@ -1,0 +1,13 @@
+.small-image {
+     width: 30px;  /* Adjust this value for your desired width */
+     height: auto; /* This ensures the aspect ratio of the image is maintained */
+ }
+ 
+ .flex-container {
+     display: flex;
+     align-items: center;  /* This will ensure images are vertically aligned in case they have different heights */
+ }
+ 
+ .img-fluid:not(:last-child) {
+     margin-right: 1em;  /* "One space" margin to the right for all images except the last one */
+ }
