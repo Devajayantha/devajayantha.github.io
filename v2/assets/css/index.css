@@ -1,0 +1,167 @@
+.about-section {
+  padding-top: 60px;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.blog-section {
+  padding: 60px 0;
+  background-color: #f8f9fa; /* Light background for the section */
+}
+.blog-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.blog-section p {
+  font-size: 1.125rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+.blog-section .paper-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.blog-section .paper-details p {
+  font-size: 1rem;
+  color: #333;
+}
+.blog-section .paper-details p strong {
+  display: block;
+  margin-top: 0.5rem;
+}
+.blog-section .paper-details a {
+  text-decoration: underline;
+  color: #007bff;
+}
+.blog-section .paper-details a:hover {
+  color: #0056b3;
+}
+
+/* Section Styling */
+.text-image-section {
+  padding: 60px 0;
+  background-color: #ffffff;
+}
+
+.section-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.section-image img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons a {
+  color: #333;
+  font-size: 1.8rem;
+  margin-right: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #007bff;
+}
+
+/* Responsive Padding */
+@media (max-width: 768px) {
+  .section-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .section-image {
+    margin-top: 30px;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+    /* Footer Styling */
+    .footer {
+      background-color: #f8f9fa;
+      color: #343a40;
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid #dee2e6;
+    }
+
+    .footer h4 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #343a40;
+    }
+
+    .footer p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      color: #6c757d;
+    }
+
+    .footer .email-link {
+      display: inline-block;
+      font-size: 1.1rem;
+      color: #007bff;
+      text-decoration: none;
+      padding: 8px 20px;
+      border: 1px solid #007bff;
+      border-radius: 30px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .footer .email-link:hover {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .footer {
+      margin-top: 20px;
+    }
+
+    .footer a {
+      font-size: 1.5rem;
+      margin: 0 10px;
+      color: #343a40;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    /* Responsive Footer */
+    @media (max-width: 768px) {
+      .footer h4 {
+        font-size: 1.6rem;
+      }
+
+      .footer p {
+        font-size: 1rem;
+      }
+
+      .footer .email-link {
+        font-size: 1rem;
+        padding: 8px 18px;
+      }
+    }
