@@ -65,7 +65,7 @@
           <div class="row align-items-center">
             <div class="col-md-4 text-center">
               <img
-                src="v2/assets/images/photo1.jpeg"
+                src="v2/assets/images/photo3.jpg"
                 alt="Deva Jayantha"
                 class="img-fluid rounded-circle profile-image"
               />
@@ -73,21 +73,27 @@
             <div class="col-md-8">
               <h2>Hi, I am Deva.</h2>
               <p>
-                a Backend Developer from Bali, I have
-                successfully contributed to several projects over the past few years, focusing on building admin panels and
-                APIs for mobile applications.
+                a Backend Developer from Bali, I have successfully contributed
+                to several projects over the past few years, focusing on
+                building admin panels and APIs for mobile applications.
               </p>
               <p>
-                I bring a strong aptitude for fast learning and adaptability, enabling me to quickly embrace new programming languages, tools, 
-                and frameworks to meet project requirements. 
-                My ability to hadle multitasking environments allows me to manage multiple projects or tasks simultaneously 
-                while consistently delivering high-quality results. As I continue to grow my expertise in backend development, I am increasingly focused on machine learning and advanced technologies. Driven by a passion for innovation, I actively seek out new methodologies and leverage third-party tools to develop creative and impactful solutions.
+                I bring a strong aptitude for fast learning and adaptability,
+                enabling me to quickly embrace new programming languages, tools,
+                and frameworks to meet project requirements. My ability to hadle
+                multitasking environments allows me to manage multiple projects
+                or tasks simultaneously while consistently delivering
+                high-quality results. As I continue to grow my expertise in
+                backend development, I am increasingly focused on machine
+                learning and advanced technologies. Driven by a passion for
+                innovation, I actively seek out new methodologies and leverage
+                third-party tools to develop creative and impactful solutions.
               </p>
 
               <p>
                 Currently, besides focusing on my programming skills, I am also
-                trying to learn how to communicate well with the others. Communication is indeed key for exchanging ideas with
-                others.
+                trying to learn how to communicate well with the others.
+                Communication is indeed key for exchanging ideas with others.
               </p>
               <p>
                 In my free time, I often work on self-improvement, learning
@@ -99,7 +105,9 @@
                 short. If you want to exchange ideas, I’d be happy to help. I
                 also enjoy new challenges.
               </p>
-              <a href="assets/I_Putu Deva Jayantha Putra_Resume.pdf" class="btn btn-primary"
+              <a
+                href="assets/I_Putu Deva Jayantha Putra_Resume.pdf"
+                class="btn btn-primary"
                 >Resume CV</a
               >
             </div>
@@ -111,12 +119,12 @@
         <div class="container">
           <div class="row">
             <div class="col-12 text-center">
-              <h2>Blog</h2>
+              <h2>Articles</h2>
               <p>
-                I am trying to start writing a blog. Honestly, I’m not a very
+                I am trying to start new habit writing some articles on this year. Honestly, I’m not a very
                 good writer, but I want to learn how to convey information
                 accurately and effectively in text. Writing is indeed very
-                important in our lives. In the future, I plan to write a blog
+                important in our lives. In the future, I plan to write a article
                 with good ideas.
               </p>
             </div>
@@ -132,25 +140,26 @@
               </div>
             </div>
           </div>
-      
-          <!-- Added extra space here -->
+
           <div class="row justify-content-center">
+            <div class="col-12">
+              <!-- See all articles link -->
+              <div class="text-end mb-3">
+                <a
+                  href="https://medium.com/@devajayantha"
+                  target="_blank"
+                  class="text-primary fw-semibold text-decoration-underline"
+                >
+                  See all articles on Medium
+                </a>
+              </div>
+            </div>
             <div class="col-md-8">
-              <p style="margin-top: 15px;">
-                I have already started my challenge to write a blog on Medium.
-              </p>
-              <p>
-                You can check it out 
-                <a href="https://medium.com/@devajayantha" target="_blank">here</a>.
-              </p>
+              <div id="medium-posts"></div>
             </div>
           </div>
-      
         </div>
       </section>
-      
-      
-      
 
       <!-- Text Left, Image Right Section -->
       <section class="text-image-section">
@@ -185,12 +194,12 @@
                   <i class="fab fa-github"></i>
                 </a>
                 <a
-                href="https://medium.com/@devajayantha"
-                target="_blank"
-                aria-label="Medium"
-              >
-                <i class="fab fa-medium"></i>
-              </a>
+                  href="https://medium.com/@devajayantha"
+                  target="_blank"
+                  aria-label="Medium"
+                >
+                  <i class="fab fa-medium"></i>
+                </a>
               </div>
             </div>
 
@@ -220,5 +229,46 @@
 
     <!-- Bootstrap JS (to handle the navbar toggling) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      fetch(
+        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@devajayantha"
+      ) // Replace @yourusername
+        .then((response) => response.json())
+        .then((data) => {
+          const container = document.getElementById("medium-posts");
+          const posts = data.items.slice(0, 3); // Limit to top 3
+          posts.forEach((item) => {
+            // Extract first image (if exists)
+            const imgMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
+            const imgSrc = imgMatch
+              ? imgMatch[1]
+              : "https://via.placeholder.com/80"; // Placeholder if no image
+
+            // Clean description text
+            const cleanDescription = item.description
+              .replace(/<img[^>]*>/g, "")
+              .replace(/<[^>]*>/g, "");
+
+            const post = `
+              <div class="d-flex mb-4 align-items-start">
+                <img src="${imgSrc}" alt="Thumbnail" class="me-3 rounded" style="width: 80px; height: 80px; object-fit: cover;">
+                <div>
+                  <div class="paper-details">
+                    <div class="paper-title fw-semibold">${item.title}</div>
+                                      <p class="text-muted small mb-1">${cleanDescription.substring(
+                                        0,
+                                        150
+                                      )}...</p>
+                    <a href="${
+                      item.link
+                    }" target="_blank" class="text-primary text-decoration-underline">Read on Medium</a>
+                  </div>
+                </div>
+              </div>
+            `;
+            container.innerHTML += post;
+          });
+        });
+    </script>
   </body>
 </html>
