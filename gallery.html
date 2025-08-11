@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Deva Jayantha's Portfolio</title>
+    <title>Deva Jayantha's Portfolio — Gallery</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -17,55 +17,158 @@
       rel="stylesheet"
     />
 
-    <!-- Custom CSS -->
+    <!-- Your existing custom CSS (optional) -->
     <link href="v2/assets/css/custom.css" rel="stylesheet" />
-    <!-- Add your custom CSS file here -->
 
+    <!-- Gallery styles -->
     <style>
-      body {
-        background-color: #f7f7f7;
+      /* --- Gallery styles (namespaced so they won't clash) --- */
+      .gallery-pro {
+        --accent: #0d6efd; /* Bootstrap primary */
+        --card: #ffffff;
+        --line: #e9ecef;
+        --text: #212529;
+        --muted: #6c757d;
+        --radius: 14px;
+      }
+      .gallery-pro .section-header {
+        font-size: clamp(26px, 3vw, 34px);
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 0 10px;
+      }
+      .gallery-pro .section-header .bar {
+        width: 48px;
+        height: 6px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--accent), #7dd3fc);
+      }
+      .gallery-pro .lead {
+        color: var(--muted);
+        margin: 0 0 20px;
       }
 
-      /* Section Styling */
-      .gallery-section {
-        padding: 60px 0;
+      .gallery-pro .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 16px 0 24px;
+      }
+      .gallery-pro .chip {
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--text);
+        padding: 8px 13px;
+        border-radius: 999px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 13px;
+        transition: transform 0.12s ease, background 0.2s ease,
+          border-color 0.2s ease;
+      }
+      .gallery-pro .chip:hover {
+        transform: translateY(-1px);
+      }
+      .gallery-pro .chip.active {
+        background: rgba(13, 110, 253, 0.1);
+        border-color: rgba(13, 110, 253, 0.35);
       }
 
-      .section-header {
-        font-size: 2rem;
-        font-weight: 500;
-        text-align: center;
-        margin-bottom: 20px;
-        color: #333;
+      .gallery-pro .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 18px;
+      }
+      .gallery-pro .g-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius);
+        background: var(--card);
+        border: 1px solid var(--line);
+        box-shadow: 0 10px 26px rgba(33, 37, 41, 0.08);
+        transition: transform 0.25s ease, box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+      .gallery-pro .g-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 38px rgba(33, 37, 41, 0.14);
+        border-color: rgba(13, 110, 253, 0.22);
       }
 
-      .gallery-item {
-        margin-bottom: 20px;
-      }
-
-      .gallery-item img {
-        width: 100%;
-        border-radius: 10px;
-        transition: transform 0.3s ease;
-      }
-
-      .gallery-item img:hover {
-        transform: scale(1.05);
-      }
-
-      .section-header::after {
-        content: "";
-        width: 60px;
-        height: 3px;
-        background-color: #007bff;
+      .gallery-pro .g-img {
         display: block;
-        margin: 10px auto 20px;
-        border-radius: 2px;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/10; /* keeps consistent crop */
+        object-fit: cover;
+        filter: saturate(1.06) contrast(1.04);
+        transform: scale(1.02);
+        transition: transform 0.35s ease;
+      }
+      .gallery-pro .g-item:hover .g-img {
+        transform: scale(1.065);
+      }
+
+      .gallery-pro .badge-pill {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 2;
+        background: linear-gradient(180deg, var(--accent), #3b86ff);
+        color: #fff;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        box-shadow: 0 6px 18px rgba(13, 110, 253, 0.25);
+      }
+      .gallery-pro .overlay {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        align-content: end;
+        padding: 14px 14px 12px;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.45),
+          rgba(0, 0, 0, 0) 60%
+        );
+        opacity: 0;
+        transition: opacity 0.25s ease;
+        pointer-events: none;
+      }
+      .gallery-pro .g-item:hover .overlay {
+        opacity: 1;
+      }
+      .gallery-pro .caption {
+        color: #fff;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .gallery-pro .caption h3 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 900;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+      }
+      .gallery-pro .meta {
+        color: #e9ecef;
+        opacity: 0.85;
+        font-size: 12px;
       }
     </style>
   </head>
+
   <body>
     <div id="app">
+      <!-- Your original navbar -->
       <header class="navbar navbar-expand-lg navbar-light custom-header">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">Deva Jayantha</a>
@@ -95,140 +198,277 @@
                 <a class="nav-link" href="porto.html">Portofolio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="gallery.html">Gallery</a>
+                <a class="nav-link active" aria-current="page" href="gallery.html"
+                  >Gallery</a
+                >
               </li>
             </ul>
           </div>
         </div>
       </header>
 
-      <!-- Gallery Section -->
-      <section class="gallery-section">
+      <!-- Upgraded Gallery -->
+      <section class="gallery-section gallery-pro py-5">
         <div class="container">
-          <h2 class="section-header">Gallery</h2>
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <div class="bar"></div>
+            <h2 class="section-header mb-0">Gallery</h2>
+          </div>
+          <p class="lead">
+            Moments from campus visits, trainings, workshops and speaking
+            sessions.
+          </p>
 
-          <div class="row">
-            <!-- Gallery Item 1 -->
-            <div class="col-md-4 gallery-item">
-              <a
-                href="v2/assets/images/gallery1.jpg"
-                data-lightbox="gallery"
-                data-title="Take a picture with students (Visiting Campus)"
-              >
-                <img
-                  src="v2/assets/images/gallery1.jpg"
-                  alt="A Picture with students"
-                />
-              </a>
-            </div>
+          <!-- Filters -->
+          <div class="filters" id="filters">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="visiting">Campus Visit</button>
+            <button class="chip" data-filter="training">Trainer</button>
+            <button class="chip" data-filter="workshop">Workshop</button>
+            <button class="chip" data-filter="speaker">Speaker</button>
+          </div>
 
-            <!-- Gallery Item 2 -->
-            <div class="col-md-4 gallery-item">
-              <a
-                href="v2/assets/images/gallery2.jpeg"
-                data-lightbox="gallery"
-                data-title="Digitirta training at Semarang, July 2023"
-              >
-                <img src="v2/assets/images/gallery2.jpeg" alt="digitirta-1" />
-              </a>
-            </div>
+          <!-- Grid -->
+          <div class="gallery-grid" id="gallery">
+            <!-- 1 -->
+            <a
+              class="g-item"
+              data-cat="visiting"
+              href="v2/assets/images/gallery1.jpg"
+              data-lightbox="gallery"
+              data-title="Take a picture with students (Campus Visit)"
+            >
+              <span class="badge-pill">Visiting</span>
+              <img
+                class="g-img"
+                loading="lazy"
+                decoding="async"
+                src="v2/assets/images/gallery1.jpg"
+                alt="Campus Visit with students"
+              />
+              <div class="overlay">
+                <div class="caption">
+                  <h3>Campus Visit</h3>
+                  <span class="meta">Students • 2025</span>
+                </div>
+              </div>
+            </a>
 
-            <!-- Gallery Item 3 -->
-            <div class="col-md-4 gallery-item">
-              <a
-                href="v2/assets/images/gallery3.jpeg"
-                data-lightbox="gallery"
-                data-title="Digitirta training at Jogyakarta, July 2024"
-              >
-                <img src="v2/assets/images/gallery3.jpeg" alt="digitirta-2" />
-              </a>
-            </div>
+            <!-- 2 -->
+            <a
+              class="g-item"
+              data-cat="training"
+              href="v2/assets/images/gallery2.jpeg"
+              data-lightbox="gallery"
+              data-title="Digitirta training at Semarang, July 2023"
+            >
+              <span class="badge-pill">Trainer</span>
+              <img
+                class="g-img"
+                loading="lazy"
+                decoding="async"
+                src="v2/assets/images/gallery2.jpeg"
+                alt="Digitirta training at Semarang, July 2023"
+              />
+              <div class="overlay">
+                <div class="caption">
+                  <h3>Digitirta – Semarang</h3>
+                  <span class="meta">July 2023</span>
+                </div>
+              </div>
+            </a>
 
-            <!-- Gallery Item 4 -->
-            <div class="col-md-4 gallery-item">
-              <a
-                href="v2/assets/images/gallery4.png"
-                data-lightbox="gallery"
-                data-title="Sharing session with students (Visiting Campus)"
-              >
-                <img
-                  src="v2/assets/images/gallery4.png"
-                  alt="sharing-session"
-                />
-              </a>
-            </div>
+            <!-- 3 -->
+            <a
+              class="g-item"
+              data-cat="training"
+              href="v2/assets/images/gallery3.jpeg"
+              data-lightbox="gallery"
+              data-title="Digitirta training at Yogyakarta, July 2024"
+            >
+              <span class="badge-pill">Trainer</span>
+              <img
+                class="g-img"
+                loading="lazy"
+                decoding="async"
+                src="v2/assets/images/gallery3.jpeg"
+                alt="Digitirta training at Yogyakarta, July 2024"
+              />
+              <div class="overlay">
+                <div class="caption">
+                  <h3>Digitirta – Yogyakarta</h3>
+                  <span class="meta">July 2024</span>
+                </div>
+              </div>
+            </a>
 
-            <!-- Gallery Item 5 -->
-            <div class="col-md-4 gallery-item">
-              <a
-                href="v2/assets/images/gallery5.jpeg"
-                data-lightbox="gallery"
-                data-title="Digitirta training at Jogyakarta, July 2024"
-              >
-                <img src="v2/assets/images/gallery5.jpeg" alt="digitirta-3" />
-              </a>
-            </div>
+            <!-- 4 -->
+            <a
+              class="g-item"
+              data-cat="visiting"
+              href="v2/assets/images/gallery4.png"
+              data-lightbox="gallery"
+              data-title="Sharing session with students (Campus Visit)"
+            >
+              <span class="badge-pill">Visiting</span>
+              <img
+                class="g-img"
+                loading="lazy"
+                decoding="async"
+                src="v2/assets/images/gallery4.png"
+                alt="Sharing session with students"
+              />
+              <div class="overlay">
+                <div class="caption">
+                  <h3>Sharing Session</h3>
+                  <span class="meta">Campus Visit</span>
+                </div>
+              </div>
+            </a>
 
-            <!-- Gallery Item 6 -->
-            <div class="col-md-4 gallery-item">
-              <a
-                href="v2/assets/images/gallery6.png"
-                data-lightbox="gallery"
-                data-title="Digitirta training with Water.org & Government at Tangerang, September 2024"
-              >
-                <img
-                  src="v2/assets/images/gallery6.png"
-                  alt="digitirta-3"
-                  style="padding: 5px; width: 320px"
-                />
-              </a>
-            </div>
+            <!-- 5 -->
+            <a
+              class="g-item"
+              data-cat="training"
+              href="v2/assets/images/gallery5.jpeg"
+              data-lightbox="gallery"
+              data-title="Digitirta training at Yogyakarta, July 2024"
+            >
+              <span class="badge-pill">Trainer</span>
+              <img
+                class="g-img"
+                loading="lazy"
+                decoding="async"
+                src="v2/assets/images/gallery5.jpeg"
+                alt="Digitirta training group photo"
+              />
+              <div class="overlay">
+                <div class="caption">
+                  <h3>Digitirta – Yogyakarta</h3>
+                  <span class="meta">July 2024</span>
+                </div>
+              </div>
+            </a>
 
-            <!-- Gallery Item 7 -->
-            <div class="col-md-4 gallery-item">
-              <a
-                href="v2/assets/images/gallery7.jpg"
-                data-lightbox="gallery"
-                data-title="Take a picture with students (Visiting Campus) 2025"
-              >
-                <img src="v2/assets/images/gallery7.jpg" alt="digitirta-3" />
-              </a>
-            </div>
+            <!-- 6 -->
+            <a
+              class="g-item"
+              data-cat="training"
+              href="v2/assets/images/gallery6.png"
+              data-lightbox="gallery"
+              data-title="Digitirta training with Water.org & Government at Tangerang, September 2024"
+            >
+              <span class="badge-pill">Trainer</span>
+              <img
+                class="g-img"
+                loading="lazy"
+                decoding="async"
+                src="v2/assets/images/gallery6.png"
+                alt="Training with Water.org & Government at Tangerang, Sept 2024"
+              />
+              <div class="overlay">
+                <div class="caption">
+                  <h3>Water.org & Gov</h3>
+                  <span class="meta">Tangerang • Sep 2024</span>
+                </div>
+              </div>
+            </a>
 
-            <!-- Gallery Item 8 -->
-            <div class="col-md-4 gallery-item">
-              <a
-                href="v2/assets/images/gallery8.jpeg"
-                data-lightbox="gallery"
-                data-title="Attend as speaker from Timedoor on Review Kurikulum dan Pengembangan Keprofesian Guru SMK TI Bali Global, July 2025"
-              >
-                <img src="v2/assets/images/gallery8.jpeg" alt="digitirta-3" />
-              </a>
-            </div>
+            <!-- 7 -->
+            <a
+              class="g-item"
+              data-cat="visiting"
+              href="v2/assets/images/gallery7.jpg"
+              data-lightbox="gallery"
+              data-title="Take a picture with students (Campus Visit) 2025"
+            >
+              <span class="badge-pill">Visiting</span>
+              <img
+                class="g-img"
+                loading="lazy"
+                decoding="async"
+                src="v2/assets/images/gallery7.jpg"
+                alt="Campus Visit 2025"
+              />
+              <div class="overlay">
+                <div class="caption">
+                  <h3>Campus Visit</h3>
+                  <span class="meta">2025</span>
+                </div>
+              </div>
+            </a>
 
-            <!-- Gallery Item 9 -->
-            <div class="col-md-4 gallery-item">
-              <a
-                href="v2/assets/images/gallery10.jpeg"
-                data-lightbox="gallery"
-                data-title="Take a picture with students (Visiting Campus) 2025"
-              >
-                <img src="v2/assets/images/gallery10.jpeg" alt="digitirta-3" />
-              </a>
-            </div>
+            <!-- 8 -->
+            <a
+              class="g-item"
+              data-cat="speaker"
+              href="v2/assets/images/gallery8.jpeg"
+              data-lightbox="gallery"
+              data-title="Speaker from Timedoor on Review Kurikulum & Pengembangan Keprofesian Guru SMK TI Bali Global, July 2025"
+            >
+              <span class="badge-pill">Speaker</span>
+              <img
+                class="g-img"
+                loading="lazy"
+                decoding="async"
+                src="v2/assets/images/gallery8.jpeg"
+                alt="Speaker session – SMK TI Bali Global, July 2025"
+              />
+              <div class="overlay">
+                <div class="caption">
+                  <h3>Curriculum Review</h3>
+                  <span class="meta">Speaker • July 2025</span>
+                </div>
+              </div>
+            </a>
 
-            <!-- Gallery Item 9 -->
-            <div class="col-md-4 gallery-item">
-              <a
-                href="v2/assets/images/gallery9.jpeg"
-                data-lightbox="gallery"
-                data-title="Collaboration on Event Mini Credential Laravel Security from Sawah Security and Timedoor at Politeknik Negeri Bali, July 2025"
-              >
-                <img src="v2/assets/images/gallery9.jpeg" alt="digitirta-3" />
-              </a>
-            </div>
+            <!-- 9 -->
+            <a
+              class="g-item"
+              data-cat="visiting"
+              href="v2/assets/images/gallery10.jpeg"
+              data-lightbox="gallery"
+              data-title="Take a picture with students (Campus Visit) 2025"
+            >
+              <span class="badge-pill">Visiting</span>
+              <img
+                class="g-img"
+                loading="lazy"
+                decoding="async"
+                src="v2/assets/images/gallery10.jpeg"
+                alt="Campus Visit 2025 group photo"
+              />
+              <div class="overlay">
+                <div class="caption">
+                  <h3>Campus Session</h3>
+                  <span class="meta">2025</span>
+                </div>
+              </div>
+            </a>
 
-            <!-- Add more gallery items as needed -->
+            <!-- 10 -->
+            <a
+              class="g-item"
+              data-cat="workshop"
+              href="v2/assets/images/gallery9.jpeg"
+              data-lightbox="gallery"
+              data-title="As Supervisor on Mini Credential – Laravel Security (Sawah Security x Timedoor) at PNB, July 2025"
+            >
+              <span class="badge-pill">Workshop</span>
+              <img
+                class="g-img"
+                loading="lazy"
+                decoding="async"
+                src="v2/assets/images/gallery9.jpeg"
+                alt="Collab workshop – Laravel Security at PNB, July 2025"
+              />
+              <div class="overlay">
+                <div class="caption">
+                  <h3>Laravel Security</h3>
+                  <span class="meta">PNB • July 2025</span>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </section>
@@ -239,5 +479,36 @@
 
     <!-- Lightbox2 JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+
+    <!-- Gallery behavior -->
+    <script>
+      // Configure Lightbox2 (if loaded)
+      if (window.lightbox) {
+        lightbox.option({
+          fadeDuration: 180,
+          resizeDuration: 180,
+          imageFadeDuration: 180,
+          wrapAround: true,
+          alwaysShowNavOnTouchDevices: true,
+        });
+      }
+
+      // Simple filtering
+      (function () {
+        const chips = document.querySelectorAll(".gallery-pro .chip");
+        const items = document.querySelectorAll(".gallery-pro .g-item");
+        chips.forEach((chip) =>
+          chip.addEventListener("click", () => {
+            chips.forEach((c) => c.classList.remove("active"));
+            chip.classList.add("active");
+            const f = chip.dataset.filter;
+            items.forEach((el) => {
+              const show = f === "all" || el.dataset.cat === f;
+              el.style.display = show ? "" : "none";
+            });
+          })
+        );
+      })();
+    </script>
   </body>
 </html>
