@@ -15,7 +15,6 @@
 
     <!-- Custom CSS -->
     <link href="v2/assets/css/custom.css" rel="stylesheet" />
-    <!-- Add your custom CSS file here -->
 
     <style>
       /* Section Styling */
@@ -37,6 +36,7 @@
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease-in-out;
+        position: relative; /* enable absolute badge */
       }
 
       .portfolio-card:hover {
@@ -128,6 +128,22 @@
         margin-top: 40px;
         font-weight: 500;
       }
+
+      /* --- Personal Work badge --- */
+      .badge-tag {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 2;
+        background: linear-gradient(180deg, #6c757d, #8a94a6);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.75rem;
+        letter-spacing: 0.2px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      }
     </style>
   </head>
   <body>
@@ -209,6 +225,47 @@
                   <a
                     href="https://play.google.com/store/apps/details?id=id.otomedia.android&hl=id"
                     class="view-project"
+                    >View Project <i class="fas fa-arrow-right"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 6: Nusa Penida Way Tour (with Personal Work badge) -->
+            <div class="col-md-6 mb-4">
+              <div class="card portfolio-card">
+                <!-- NEW badge -->
+                <span class="badge-tag">Personal Work</span>
+
+                <img
+                  src="v2/assets/images/penidaway.png"
+                  alt="Nusa Penida Way Tour preview"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Nusa Penida Way Tour</h5>
+                  <p class="card-text">
+                    This project showcases tourist attractions in Nusa Penida,
+                    Bali. It helps travelers discover and explore the island.
+                    Launched in 2019, it was inactive for a few years; I’m now
+                    rebranding the site to make it modern and responsive.
+                  </p>
+
+                  <!-- Technology Used (Vertical Icons) -->
+                  <div class="technology-used">
+                    <div class="tech-icon-group">
+                      <span class="iconify" data-icon="logos:typescript"></span>
+                    </div>
+                    <div class="tech-icon-group">
+                      <span class="iconify" data-icon="logos:nuxt"></span>
+                    </div>
+                    <div class="tech-icon-group">
+                      <span class="iconify" data-icon="logos:express"></span>
+                    </div>
+                    <div class="tech-icon-group">
+                      <span class="iconify" data-icon="logos:mysql"></span>
+                    </div>
+                  </div>
+                  <a href="https://penidaway.com" class="view-project"
                     >View Project <i class="fas fa-arrow-right"></i
                   ></a>
                 </div>
@@ -422,13 +479,15 @@
               </div>
             </div>
 
-            <!-- GitHub Project 2 -->
+            <!-- GitHub Project 3 -->
             <div class="col-md-4 mb-4">
               <div class="card github-card">
                 <div class="card-body">
                   <h5 class="card-title">Mini Project Shipment Django</h5>
                   <p class="card-text">
-                    This project is simple project build with django framework how to used own framework features like views and ORM (Object-relational mapping)
+                    This project is simple project build with django framework
+                    how to used own framework features like views and ORM
+                    (Object-relational mapping)
                   </p>
                   <a
                     href="https://github.com/Devajayantha/flask_bi"
