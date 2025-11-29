@@ -1,55 +1,32 @@
-name: 🚀 Deploy Website via Password SSH
+name: Simple Push to VPS (with Artisan Clear)
 
 on:
   push:
-    branches: [ main ]  # or "master" if that's your branch name
+    branches: [ main ]     # change if needed
+  workflow_dispatch: {}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Debug – List repo files
+      - name: Prune CI files
         run: |
-          echo "Current directory:"
-          pwd
-          echo "Files:"
-          ls -la
-          echo "All files (depth 2):"
-          find . -maxdepth 2 -type f | sed -n '1,200p'
+          rm -rf .git .github
 
-      - name: Prepare target directory on VPS
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          password: ${{ secrets.VPS_PASSWORD }}
-          script: |
-            sudo mkdir -p /var/www/devajayantha
-            command -v tar >/dev/null 2>&1 || (sudo apt-get update && sudo apt-get install -y tar)
-
-      - name: Upload files to VPS
+      - name: Upload Project to VPS (Password Auth)
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
-          # Upload all top-level HTML + asset folders only
-          source: |
-            ./*.html
-            assets/**
-            v2/**
-          target: /var/www/devajayantha
+          port: 22
+          source: "."
+          target: "/var/www/devajayantha"
           overwrite: true
-          rm: true
+          rm: false
+          strip_components: 0
 
-      - name: Reload Nginx
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          password: ${{ secrets.VPS_PASSWORD }}
-          script: sudo systemctl reload nginx
