@@ -1,0 +1,248 @@
+<template>
+  <div class="theme-gradient">
+    <Head>
+      <Title>Resume — Deva Jayantha</Title>
+    </Head>
+
+    <AppHeader />
+
+    <!-- Hero -->
+    <section class="resume-hero">
+      <div class="container">
+        <div class="row align-items-center gy-4">
+          <div class="col-lg-8">
+            <span class="eyebrow"><i class="fa-solid fa-id-card-clip"></i> Resume</span>
+            <h1>Backend Developer focused on APIs, integrations, and clean admin tooling.</h1>
+            <p class="lead">
+              I design data models, ship reliable endpoints, and collaborate
+              closely with mobile, PM, and QA. Comfortable learning new stacks
+              fast and maintaining production systems.
+            </p>
+            <div class="d-flex gap-2 flex-wrap">
+              <a href="/I_Putu Deva Jayantha Putra_Resume.pdf" class="btn btn-primary">
+                <i class="fa-solid fa-file-arrow-down me-1"></i> Download PDF
+              </a>
+              <a href="mailto:devajayantha870@gmail.com" class="btn btn-outline-primary">
+                <i class="fa-solid fa-envelope me-1"></i> Contact
+              </a>
+              <NuxtLink to="/" class="btn btn-outline-primary">
+                <i class="fa-solid fa-arrow-left me-1"></i> Back to About
+              </NuxtLink>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card stat-card p-3 h-100">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <div class="big">5+ yrs</div>
+                  <p>Professional Dev Experience</p>
+                </div>
+                <div>
+                  <div class="big">20+</div>
+                  <p>Projects Contributed</p>
+                </div>
+              </div>
+              <hr class="my-3" />
+              <p class="mb-1 fw-bold">Core Tools</p>
+              <div class="chips">
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel" />Laravel</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" />Django</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" />Express</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" />Vue.js</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />MySQL</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" />Redis</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />Docker</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />MongoDB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section class="py-3">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="d-flex align-items-center gap-3 mb-2">
+              <div class="bar"></div>
+              <h2 class="section-title mb-0">Experience</h2>
+            </div>
+            <div class="tl">
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="card tl-card">
+                  <h3 class="role">Backend Developer — PT. Timedoor Indonesia</h3>
+                  <div class="meta">Oct 2020 – Present · Bali, Indonesia</div>
+                  <ul>
+                    <li>Analyze the design system from the User Interface (UI) perspective and develop a corresponding database schema.</li>
+                    <li>Discuss API specifications with the mobile team to ensure alignment with the application's requirements.</li>
+                    <li>Develop and finalize API modules based on the defined API specifications.</li>
+                    <li>Collaboration with Project Manager, Mobile Developer, and Quality Assurance Team to finishing features and functionallity.</li>
+                    <li>Develop third-party integrations, such as payment gateways, cloud messaging, and other services, based on project requirements.</li>
+                    <li>Develop and complete user-friendly admin dashboard for master data, customers, transactions, or report modules.</li>
+                    <li>Optimize data queries based on insights from application performance monitoring.</li>
+                    <li>Engage in discussions with the client to provide and clarify technical information.</li>
+                    <li>Maintain the application by analyzing problems and implementing effective solutions.</li>
+                    <li>Reviewed final project code submitted by interns to ensure adherence to standards.</li>
+                    <li>Collaborated with clients to conduct training sessions on application usage for their customers.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="card tl-card">
+                  <h3 class="role">Full-stack Developer — PT. Danaco Global Solusi (OxySystem)</h3>
+                  <div class="meta">Oct 2019 – Sep 2020 · Bali, Indonesia</div>
+                  <ul>
+                    <li>Modernized POS frontend UI with Bootstrap for responsive workflow.</li>
+                    <li>Built new Android screens; created/connected REST APIs to support features.</li>
+                    <li>Visited client sites for on-premise monitoring, fixes, and feedback loops.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="d-flex align-items-center gap-3 mb-2">
+              <div class="bar"></div>
+              <h2 class="section-title mb-0">Education</h2>
+            </div>
+            <div class="tl">
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="card tl-card">
+                  <h3 class="role">B.Tech in Information Technology</h3>
+                  <div class="meta">2016 – Aug 2020 · Udayana University, Bali</div>
+                  <ul>
+                    <li>Concentration: Teknologi Cerdas</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-3 mt-4 mb-2">
+              <div class="bar"></div>
+              <h2 class="section-title mb-0">Highlights</h2>
+            </div>
+            <div class="card p-3">
+              <p class="fw-bold mb-2">Currently Exploring</p>
+              <div class="chips">
+                <span class="chip">LLM</span>
+                <span class="chip">Communication</span>
+                <span class="chip">Backend Development</span>
+                <span class="chip">System Analysis</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="py-3">
+      <div class="container">
+        <div class="d-flex align-items-center gap-3 mb-2">
+          <div class="bar"></div>
+          <h2 class="section-title mb-0">Tech Stack</h2>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="card p-3 h-100">
+              <h6 class="fw-bold mb-2">Languages & Frameworks</h6>
+              <div class="chips">
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel" />Laravel</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />Python</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" />Django</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />JavaScript</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />TypeScript</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" />Vue.js</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" />Express</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />Java</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card p-3 h-100">
+              <h6 class="fw-bold mb-2">Databases & Tools</h6>
+              <div class="chips">
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />MySQL</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="Postgres" />Postgres</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" />Redis</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />MongoDB</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />Docker</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />Git</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman" />Postman</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" alt="Kafka" />Kafka</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elasticsearch/elasticsearch-original.svg" alt="Elasticsearch" />Elasticsearch</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain.svg" alt="Ubuntu" />Ubuntu</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-4">
+      <div class="container">
+        <div class="card p-3 d-flex flex-md-row align-items-center justify-content-between cta-card">
+          <div class="mb-2 mb-md-0">
+            <h5 class="mb-1">Open to collaboration project</h5>
+            <p class="mb-0" style="color:var(--muted)">Happy to discuss your development needs, integrations, or migrations.</p>
+          </div>
+          <div class="d-flex gap-2">
+            <a href="mailto:devajayantha870@gmail.com" class="btn btn-primary"><i class="fa-solid fa-envelope me-1"></i> Email Me</a>
+            <NuxtLink to="/porto" class="btn btn-outline-primary"><i class="fa-solid fa-briefcase me-1"></i> See Projects</NuxtLink>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer override for resume page -->
+    <footer class="resume-footer">
+      <p class="mb-1"><strong>Deva Jayantha</strong> — Backend Developer</p>
+      <a href="mailto:devajayantha870@gmail.com">devajayantha870@gmail.com</a>
+    </footer>
+  </div>
+</template>
+
+<script setup lang="ts">
+definePageMeta({ layout: false })
+</script>
+
+<style scoped>
+.theme-gradient { --bg:linear-gradient(180deg,#f7fbff 0,#f2f6ff 60%,#eef4ff 100%); --surface:#fff; --text:#0e1726; --muted:#55627a; --line:#e8eef7; --accent:#6366f1; --radius:18px; --shadow:0 14px 36px rgba(2,8,23,.10); --bar-grad:linear-gradient(90deg,#6366f1,#22d3ee); background:var(--bg); color:var(--text); }
+.card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); }
+.section-title { font-weight:800; letter-spacing:.2px; }
+.bar { width:48px; height:6px; border-radius:999px; background:var(--bar-grad,linear-gradient(90deg,var(--accent),#7dd3fc)); }
+.btn-primary { background:#111 !important; border-color:#111 !important; font-weight:700; border-radius:12px; }
+.btn-primary:hover { background:#000 !important; border-color:#000 !important; }
+.btn-outline-primary { color:#111 !important; border-color:#111 !important; border-radius:12px; }
+.btn-outline-primary:hover { background:#111 !important; color:#fff !important; }
+.eyebrow { display:inline-flex; gap:.5rem; align-items:center; font-weight:800; letter-spacing:.3px; font-size:.9rem; color:#111 !important; border:1px solid #111 !important; background:rgba(0,0,0,.06) !important; padding:.35rem .7rem; border-radius:999px; }
+.resume-hero { padding:clamp(42px,6vw,64px) 0; }
+.resume-hero h1 { font-weight:900; letter-spacing:.2px; font-size:clamp(28px,4vw,40px); margin:.6rem 0 .4rem; }
+.resume-hero .lead { color:var(--muted); }
+.tl { position:relative; padding-left:28px; margin:0; }
+.tl::before { content:''; position:absolute; left:10px; top:0; bottom:0; width:2px; background:var(--line); }
+.tl-item { position:relative; margin-bottom:16px; }
+.tl-item:last-child { margin-bottom:0; }
+.tl-dot { position:absolute; left:-1px; top:12px; width:20px; height:20px; border-radius:50%; background:#111; box-shadow:0 0 0 4px #fff; border:2px solid #111; }
+.tl-card { margin-left:8px; padding:14px 16px; }
+.role { font-weight:800; margin:0 0 .2rem; }
+.meta { color:var(--muted); font-size:.92rem; margin-bottom:.4rem; }
+.tl-card ul { padding-left:18px; margin:0; }
+.tl-card li { margin:.28rem 0; color:#24324a; }
+.chips { display:flex; flex-wrap:wrap; gap:10px; }
+.chip { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line); background:#fff; color:#0e1726; border-radius:999px; padding:.38rem .72rem; font-weight:800; font-size:.9rem; box-shadow:0 6px 18px rgba(2,8,23,.05); }
+.chip img { width:18px; height:18px; display:block; }
+.stat-card .big { font-weight:900; font-size:clamp(22px,3vw,28px); line-height:1; margin-bottom:6px; }
+.stat-card p { color:var(--muted); margin:0; }
+.cta-card h5 { font-weight:800; }
+.resume-footer { background:#f8fafc; color:#0f172a; text-align:center; padding:48px 16px; border-top:1px solid var(--line); }
+.resume-footer a { color:#0d6efd; font-weight:700; text-decoration:none; }
+.resume-footer a:hover { text-decoration:underline; }
+</style>

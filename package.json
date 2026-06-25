@@ -1,0 +1,21 @@
+{
+  "name": "devajayantha-portfolio",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "check:node": "node scripts/check-node.mjs",
+    "build": "npm run check:node && nuxt build",
+    "dev": "npm run check:node && nuxt dev",
+    "generate": "npm run check:node && nuxt generate",
+    "preview": "npm run check:node && nuxt preview"
+  },
+  "devDependencies": {
+    "nuxt": "3.13.0"
+  },
+  "dependencies": {
+    "vue-easy-lightbox": "^1.17.0"
+  }
+}
