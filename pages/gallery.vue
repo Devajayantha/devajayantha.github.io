@@ -29,15 +29,20 @@
             v-for="(item, idx) in filteredItems"
             :key="item.src"
             class="g-item"
-            @click="openLightbox(idx)"
           >
-            <span class="badge-pill">{{ item.badge }}</span>
-            <img class="g-img" loading="lazy" decoding="async" :src="item.src" :alt="item.alt" />
-            <div class="overlay">
-              <div class="caption">
-                <h3>{{ item.title }}</h3>
-                <span class="meta">{{ item.meta }}</span>
-              </div>
+            <button
+              type="button"
+              class="g-img-wrap"
+              :aria-label="`Open image: ${item.title}`"
+              @click="openLightbox(idx)"
+            >
+              <span class="badge-pill">{{ item.badge }}</span>
+              <img class="g-img" loading="lazy" decoding="async" :src="item.src" :alt="item.alt" />
+            </button>
+            <div class="g-body">
+              <h3 class="g-title">{{ item.title }}</h3>
+              <p class="g-meta">{{ item.meta }}</p>
+              <p class="g-desc">{{ item.desc }}</p>
             </div>
           </div>
         </div>
@@ -63,20 +68,101 @@ interface GalleryItem {
   badge: string
   title: string
   meta: string
+  desc: string
   cat: string
 }
 
 const allItems: GalleryItem[] = [
-  { src: '/images/gallery1.jpg', alt: 'Campus Visit with students', badge: 'Visiting', title: 'Campus Visit', meta: 'Students • 2025', cat: 'visiting' },
-  { src: '/images/gallery2.jpeg', alt: 'Digitirta training at Semarang, July 2023', badge: 'Trainer', title: 'Digitirta – Semarang', meta: 'July 2023', cat: 'training' },
-  { src: '/images/gallery3.jpeg', alt: 'Digitirta training at Yogyakarta, July 2024', badge: 'Trainer', title: 'Digitirta – Yogyakarta', meta: 'July 2024', cat: 'training' },
-  { src: '/images/gallery4.png', alt: 'Sharing session with students', badge: 'Visiting', title: 'Sharing Session', meta: 'Campus Visit', cat: 'visiting' },
-  { src: '/images/gallery5.jpeg', alt: 'Digitirta training group photo', badge: 'Trainer', title: 'Digitirta – Yogyakarta', meta: 'July 2024', cat: 'training' },
-  { src: '/images/gallery6.png', alt: 'Training with Water.org & Government at Tangerang, Sept 2024', badge: 'Trainer', title: 'Water.org & Gov', meta: 'Tangerang • Sep 2024', cat: 'training' },
-  { src: '/images/gallery7.jpg', alt: 'Campus Visit 2025', badge: 'Visiting', title: 'Campus Visit', meta: '2025', cat: 'visiting' },
-  { src: '/images/gallery8.jpeg', alt: 'Speaker session – SMK TI Bali Global, July 2025', badge: 'Speaker', title: 'Curriculum Review', meta: 'Speaker • July 2025', cat: 'speaker' },
-  { src: '/images/gallery10.jpeg', alt: 'Campus Visit 2025 group photo', badge: 'Visiting', title: 'Campus Session', meta: '2025', cat: 'visiting' },
-  { src: '/images/gallery9.jpeg', alt: 'Collab workshop – Laravel Security at PNB, July 2025', badge: 'Workshop', title: 'Laravel Security', meta: 'PNB • July 2025', cat: 'workshop' },
+  {
+    src: '/images/gallery1.jpg',
+    alt: 'Campus Visit with students',
+    badge: 'Visiting',
+    title: 'Campus Visit',
+    meta: 'Students • 2025',
+    desc: 'A fun moment capturing a group photo with students during a campus visit. These visits are opportunities to share industry insights and inspire the next generation of tech professionals.',
+    cat: 'visiting',
+  },
+  {
+    src: '/images/gallery2.jpeg',
+    alt: 'Digitirta training at Semarang, July 2023',
+    badge: 'Trainer',
+    title: 'Digitirta – Semarang',
+    meta: 'Trainer • July 2023',
+    desc: 'Conducting a hands-on training session for Digitirta participants in Semarang. The program focused on practical digital skills to help participants grow their capabilities in the tech industry.',
+    cat: 'training',
+  },
+  {
+    src: '/images/gallery3.jpeg',
+    alt: 'Digitirta training at Yogyakarta, July 2024',
+    badge: 'Trainer',
+    title: 'Digitirta – Yogyakarta',
+    meta: 'Trainer • July 2024',
+    desc: 'Leading a Digitirta training session in Yogyakarta, delivering structured learning on software development fundamentals. A memorable batch full of enthusiasm and curiosity.',
+    cat: 'training',
+  },
+  {
+    src: '/images/gallery4.png',
+    alt: 'Sharing session with students',
+    badge: 'Visiting',
+    title: 'Sharing Session',
+    meta: 'Campus Visit',
+    desc: 'An interactive sharing session with students at a campus visit, discussing real-world career paths in tech, what it takes to land a job, and how to build relevant skills while still studying.',
+    cat: 'visiting',
+  },
+  {
+    src: '/images/gallery5.jpeg',
+    alt: 'Digitirta training group photo',
+    badge: 'Trainer',
+    title: 'Digitirta – Yogyakarta',
+    meta: 'Trainer • July 2024',
+    desc: 'Group photo with Digitirta trainees in Yogyakarta at the end of the program. It is always rewarding to see participants grow in confidence and technical ability throughout the training.',
+    cat: 'training',
+  },
+  {
+    src: '/images/gallery6.png',
+    alt: 'Training with Water.org & Government at Tangerang, Sept 2024',
+    badge: 'Trainer',
+    title: 'Water.org & Government Training',
+    meta: 'Trainer • Tangerang • Sep 2024',
+    desc: 'A collaborative training initiative with Water.org and local government officials in Tangerang. The session aimed to digitize workflows and strengthen digital literacy among public sector participants.',
+    cat: 'training',
+  },
+  {
+    src: '/images/gallery7.jpg',
+    alt: 'Campus Visit 2025',
+    badge: 'Visiting',
+    title: 'Campus Visit',
+    meta: 'Students • 2025',
+    desc: 'Visiting a campus in 2025 to connect with students and faculty. These engagements help bridge the gap between academic learning and the expectations of the tech industry today.',
+    cat: 'visiting',
+  },
+  {
+    src: '/images/gallery8.jpeg',
+    alt: 'Speaker session – SMK TI Bali Global, July 2025',
+    badge: 'Speaker',
+    title: 'Curriculum Review – SMK TI Bali Global',
+    meta: 'Speaker • July 2025',
+    desc: 'Invited as a speaker from Timedoor to contribute to the vocational curriculum review and professional development program for IT teachers at SMK TI Bali Global.',
+    cat: 'speaker',
+  },
+  {
+    src: '/images/gallery10.jpeg',
+    alt: 'Campus Visit 2025 group photo',
+    badge: 'Visiting',
+    title: 'Campus Session',
+    meta: 'Students • 2025',
+    desc: 'Wrapping up a campus session with a group photo alongside enthusiastic students. Moments like these are a reminder of why mentoring and knowledge-sharing matter beyond the classroom.',
+    cat: 'visiting',
+  },
+  {
+    src: '/images/gallery9.jpeg',
+    alt: 'Collab workshop – Laravel Security at PNB, July 2025',
+    badge: 'Workshop',
+    title: 'Laravel Security – Mini Credential',
+    meta: 'Workshop Supervisor • PNB • July 2025',
+    desc: 'Serving as supervisor for a Mini Credential workshop on Laravel Security, a collaboration between Sawah Security and Timedoor at Politeknik Negeri Bali.',
+    cat: 'workshop',
+  },
 ]
 
 const filters = [
@@ -119,14 +205,15 @@ function openLightbox(idx: number) {
 .chip:hover { transform: translateY(-1px); }
 .chip.active { background: rgba(13,110,253,0.1); border-color: rgba(13,110,253,0.35); }
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 18px; }
-.g-item { position: relative; overflow: hidden; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); box-shadow: 0 10px 26px rgba(33,37,41,0.08); transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; cursor: pointer; }
+.g-item { overflow: hidden; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); box-shadow: 0 10px 26px rgba(33,37,41,0.08); transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; display: flex; flex-direction: column; }
 .g-item:hover { transform: translateY(-4px); box-shadow: 0 16px 38px rgba(33,37,41,0.14); border-color: rgba(13,110,253,0.22); }
+.g-img-wrap { position: relative; overflow: hidden; display: block; line-height: 0; padding: 0; border: 0; background: transparent; text-align: inherit; cursor: pointer; }
+.g-img-wrap:focus-visible { outline: 3px solid rgba(13,110,253,0.35); outline-offset: -3px; }
 .g-img { display: block; width: 100%; height: auto; aspect-ratio: 16/10; object-fit: cover; filter: saturate(1.06) contrast(1.04); transform: scale(1.02); transition: transform 0.35s ease; }
 .g-item:hover .g-img { transform: scale(1.065); }
 .badge-pill { position: absolute; top: 12px; left: 12px; z-index: 2; background: linear-gradient(180deg,var(--accent),#3b86ff); color: #fff; font-weight: 800; letter-spacing: 0.2px; font-size: 12px; padding: 6px 10px; border-radius: 999px; box-shadow: 0 6px 18px rgba(13,110,253,0.25); }
-.overlay { position: absolute; inset: 0; display: grid; align-content: end; padding: 14px 14px 12px; background: linear-gradient(to top,rgba(0,0,0,0.45),rgba(0,0,0,0) 60%); opacity: 0; transition: opacity 0.25s ease; pointer-events: none; }
-.g-item:hover .overlay { opacity: 1; }
-.caption { color: #fff; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.caption h3 { margin: 0; font-size: 16px; font-weight: 900; text-shadow: 0 2px 10px rgba(0,0,0,0.45); }
-.meta { color: #e9ecef; opacity: 0.85; font-size: 12px; }
+.g-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.g-title { font-size: 15px; font-weight: 800; color: var(--text); margin: 0; }
+.g-meta { font-size: 12px; color: var(--accent); font-weight: 600; margin: 0; }
+.g-desc { font-size: 13px; color: var(--muted); line-height: 1.55; margin: 6px 0 0; }
 </style>

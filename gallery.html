@@ -17,14 +17,11 @@
       rel="stylesheet"
     />
 
-    <!-- Your existing custom CSS (optional) -->
     <link href="v2/assets/css/custom.css" rel="stylesheet" />
 
-    <!-- Gallery styles -->
     <style>
-      /* --- Gallery styles (namespaced so they won't clash) --- */
       .gallery-pro {
-        --accent: #0d6efd; /* Bootstrap primary */
+        --accent: #0d6efd;
         --card: #ffffff;
         --line: #e9ecef;
         --text: #212529;
@@ -80,18 +77,21 @@
 
       .gallery-pro .gallery-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
       }
+
+      /* Card wrapper — not an <a> anymore, just a div */
       .gallery-pro .g-item {
-        position: relative;
-        overflow: hidden;
         border-radius: var(--radius);
         background: var(--card);
         border: 1px solid var(--line);
         box-shadow: 0 10px 26px rgba(33, 37, 41, 0.08);
         transition: transform 0.25s ease, box-shadow 0.25s ease,
           border-color 0.25s ease;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
       }
       .gallery-pro .g-item:hover {
         transform: translateY(-4px);
@@ -99,11 +99,17 @@
         border-color: rgba(13, 110, 253, 0.22);
       }
 
+      /* Clickable image area */
+      .gallery-pro .g-img-wrap {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        line-height: 0;
+      }
       .gallery-pro .g-img {
         display: block;
         width: 100%;
-        height: auto;
-        aspect-ratio: 16/10; /* keeps consistent crop */
+        aspect-ratio: 16/10;
         object-fit: cover;
         filter: saturate(1.06) contrast(1.04);
         transform: scale(1.02);
@@ -126,49 +132,40 @@
         padding: 6px 10px;
         border-radius: 999px;
         box-shadow: 0 6px 18px rgba(13, 110, 253, 0.25);
-      }
-      .gallery-pro .overlay {
-        position: absolute;
-        inset: 0;
-        display: grid;
-        align-content: end;
-        padding: 14px 14px 12px;
-        background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.45),
-          rgba(0, 0, 0, 0) 60%
-        );
-        opacity: 0;
-        transition: opacity 0.25s ease;
         pointer-events: none;
       }
-      .gallery-pro .g-item:hover .overlay {
-        opacity: 1;
-      }
-      .gallery-pro .caption {
-        color: #fff;
+
+      /* Always-visible card body */
+      .gallery-pro .g-body {
+        padding: 14px 16px 16px;
         display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        align-items: center;
+        flex-direction: column;
+        gap: 4px;
+        flex: 1;
       }
-      .gallery-pro .caption h3 {
+      .gallery-pro .g-body .g-title {
+        font-size: 15px;
+        font-weight: 800;
+        color: var(--text);
         margin: 0;
-        font-size: 16px;
-        font-weight: 900;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
       }
-      .gallery-pro .meta {
-        color: #e9ecef;
-        opacity: 0.85;
+      .gallery-pro .g-body .g-meta {
         font-size: 12px;
+        color: var(--accent);
+        font-weight: 600;
+        margin: 0;
+      }
+      .gallery-pro .g-body .g-desc {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.55;
+        margin: 6px 0 0;
       }
     </style>
   </head>
 
   <body>
     <div id="app">
-      <!-- Your original navbar -->
       <header class="navbar navbar-expand-lg navbar-light custom-header">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">Deva Jayantha</a>
@@ -207,7 +204,6 @@
         </div>
       </header>
 
-      <!-- Upgraded Gallery -->
       <section class="gallery-section gallery-pro py-5">
         <div class="container">
           <div class="d-flex align-items-center gap-3 mb-2">
@@ -230,245 +226,177 @@
 
           <!-- Grid -->
           <div class="gallery-grid" id="gallery">
+
             <!-- 1 -->
-            <a
-              class="g-item"
-              data-cat="visiting"
-              href="v2/assets/images/gallery1.jpg"
-              data-lightbox="gallery"
-              data-title="Take a picture with students (Campus Visit)"
-            >
-              <span class="badge-pill">Visiting</span>
-              <img
-                class="g-img"
-                loading="lazy"
-                decoding="async"
-                src="v2/assets/images/gallery1.jpg"
-                alt="Campus Visit with students"
-              />
-              <div class="overlay">
-                <div class="caption">
-                  <h3>Campus Visit</h3>
-                  <span class="meta">Students • 2025</span>
-                </div>
+            <div class="g-item" data-cat="visiting">
+              <a class="g-img-wrap" href="v2/assets/images/gallery1.jpg"
+                data-lightbox="gallery"
+                data-title="Take a picture with students (Campus Visit)">
+                <span class="badge-pill">Visiting</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery1.jpg"
+                  alt="Campus Visit with students" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Campus Visit</h3>
+                <p class="g-meta">Students • 2025</p>
+                <p class="g-desc">A fun moment capturing a group photo with students during a campus visit. These visits are opportunities to share industry insights and inspire the next generation of tech professionals.</p>
               </div>
-            </a>
+            </div>
 
             <!-- 2 -->
-            <a
-              class="g-item"
-              data-cat="training"
-              href="v2/assets/images/gallery2.jpeg"
-              data-lightbox="gallery"
-              data-title="Digitirta training at Semarang, July 2023"
-            >
-              <span class="badge-pill">Trainer</span>
-              <img
-                class="g-img"
-                loading="lazy"
-                decoding="async"
-                src="v2/assets/images/gallery2.jpeg"
-                alt="Digitirta training at Semarang, July 2023"
-              />
-              <div class="overlay">
-                <div class="caption">
-                  <h3>Digitirta – Semarang</h3>
-                  <span class="meta">July 2023</span>
-                </div>
+            <div class="g-item" data-cat="training">
+              <a class="g-img-wrap" href="v2/assets/images/gallery2.jpeg"
+                data-lightbox="gallery"
+                data-title="Digitirta training at Semarang, July 2023">
+                <span class="badge-pill">Trainer</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery2.jpeg"
+                  alt="Digitirta training at Semarang, July 2023" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Digitirta – Semarang</h3>
+                <p class="g-meta">Trainer • July 2023</p>
+                <p class="g-desc">Conducting a hands-on training session for Digitirta participants in Semarang. The program focused on practical digital skills to help participants grow their capabilities in the tech industry.</p>
               </div>
-            </a>
+            </div>
 
             <!-- 3 -->
-            <a
-              class="g-item"
-              data-cat="training"
-              href="v2/assets/images/gallery3.jpeg"
-              data-lightbox="gallery"
-              data-title="Digitirta training at Yogyakarta, July 2024"
-            >
-              <span class="badge-pill">Trainer</span>
-              <img
-                class="g-img"
-                loading="lazy"
-                decoding="async"
-                src="v2/assets/images/gallery3.jpeg"
-                alt="Digitirta training at Yogyakarta, July 2024"
-              />
-              <div class="overlay">
-                <div class="caption">
-                  <h3>Digitirta – Yogyakarta</h3>
-                  <span class="meta">July 2024</span>
-                </div>
+            <div class="g-item" data-cat="training">
+              <a class="g-img-wrap" href="v2/assets/images/gallery3.jpeg"
+                data-lightbox="gallery"
+                data-title="Digitirta training at Yogyakarta, July 2024">
+                <span class="badge-pill">Trainer</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery3.jpeg"
+                  alt="Digitirta training at Yogyakarta, July 2024" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Digitirta – Yogyakarta</h3>
+                <p class="g-meta">Trainer • July 2024</p>
+                <p class="g-desc">Leading a Digitirta training session in Yogyakarta, delivering structured learning on software development fundamentals. A memorable batch full of enthusiasm and curiosity.</p>
               </div>
-            </a>
+            </div>
 
             <!-- 4 -->
-            <a
-              class="g-item"
-              data-cat="visiting"
-              href="v2/assets/images/gallery4.png"
-              data-lightbox="gallery"
-              data-title="Sharing session with students (Campus Visit)"
-            >
-              <span class="badge-pill">Visiting</span>
-              <img
-                class="g-img"
-                loading="lazy"
-                decoding="async"
-                src="v2/assets/images/gallery4.png"
-                alt="Sharing session with students"
-              />
-              <div class="overlay">
-                <div class="caption">
-                  <h3>Sharing Session</h3>
-                  <span class="meta">Campus Visit</span>
-                </div>
+            <div class="g-item" data-cat="visiting">
+              <a class="g-img-wrap" href="v2/assets/images/gallery4.png"
+                data-lightbox="gallery"
+                data-title="Sharing session with students (Campus Visit)">
+                <span class="badge-pill">Visiting</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery4.png"
+                  alt="Sharing session with students" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Sharing Session</h3>
+                <p class="g-meta">Campus Visit</p>
+                <p class="g-desc">An interactive sharing session with students at a campus visit, discussing real-world career paths in tech, what it takes to land a job, and how to build relevant skills while still studying.</p>
               </div>
-            </a>
+            </div>
 
             <!-- 5 -->
-            <a
-              class="g-item"
-              data-cat="training"
-              href="v2/assets/images/gallery5.jpeg"
-              data-lightbox="gallery"
-              data-title="Digitirta training at Yogyakarta, July 2024"
-            >
-              <span class="badge-pill">Trainer</span>
-              <img
-                class="g-img"
-                loading="lazy"
-                decoding="async"
-                src="v2/assets/images/gallery5.jpeg"
-                alt="Digitirta training group photo"
-              />
-              <div class="overlay">
-                <div class="caption">
-                  <h3>Digitirta – Yogyakarta</h3>
-                  <span class="meta">July 2024</span>
-                </div>
+            <div class="g-item" data-cat="training">
+              <a class="g-img-wrap" href="v2/assets/images/gallery5.jpeg"
+                data-lightbox="gallery"
+                data-title="Digitirta training at Yogyakarta, July 2024">
+                <span class="badge-pill">Trainer</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery5.jpeg"
+                  alt="Digitirta training group photo" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Digitirta – Yogyakarta</h3>
+                <p class="g-meta">Trainer • July 2024</p>
+                <p class="g-desc">Group photo with Digitirta trainees in Yogyakarta at the end of the program. It's always rewarding to see participants grow in confidence and technical ability throughout the training.</p>
               </div>
-            </a>
+            </div>
 
             <!-- 6 -->
-            <a
-              class="g-item"
-              data-cat="training"
-              href="v2/assets/images/gallery6.png"
-              data-lightbox="gallery"
-              data-title="Digitirta training with Water.org & Government at Tangerang, September 2024"
-            >
-              <span class="badge-pill">Trainer</span>
-              <img
-                class="g-img"
-                loading="lazy"
-                decoding="async"
-                src="v2/assets/images/gallery6.png"
-                alt="Training with Water.org & Government at Tangerang, Sept 2024"
-              />
-              <div class="overlay">
-                <div class="caption">
-                  <h3>Water.org & Gov</h3>
-                  <span class="meta">Tangerang • Sep 2024</span>
-                </div>
+            <div class="g-item" data-cat="training">
+              <a class="g-img-wrap" href="v2/assets/images/gallery6.png"
+                data-lightbox="gallery"
+                data-title="Digitirta training with Water.org & Government at Tangerang, September 2024">
+                <span class="badge-pill">Trainer</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery6.png"
+                  alt="Training with Water.org & Government at Tangerang, Sept 2024" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Water.org & Government Training</h3>
+                <p class="g-meta">Trainer • Tangerang • Sep 2024</p>
+                <p class="g-desc">A collaborative training initiative with Water.org and local government officials in Tangerang. The session aimed to digitize workflows and strengthen digital literacy among public sector participants.</p>
               </div>
-            </a>
+            </div>
 
             <!-- 7 -->
-            <a
-              class="g-item"
-              data-cat="visiting"
-              href="v2/assets/images/gallery7.jpg"
-              data-lightbox="gallery"
-              data-title="Take a picture with students (Campus Visit) 2025"
-            >
-              <span class="badge-pill">Visiting</span>
-              <img
-                class="g-img"
-                loading="lazy"
-                decoding="async"
-                src="v2/assets/images/gallery7.jpg"
-                alt="Campus Visit 2025"
-              />
-              <div class="overlay">
-                <div class="caption">
-                  <h3>Campus Visit</h3>
-                  <span class="meta">2025</span>
-                </div>
+            <div class="g-item" data-cat="visiting">
+              <a class="g-img-wrap" href="v2/assets/images/gallery7.jpg"
+                data-lightbox="gallery"
+                data-title="Take a picture with students (Campus Visit) 2025">
+                <span class="badge-pill">Visiting</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery7.jpg"
+                  alt="Campus Visit 2025" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Campus Visit</h3>
+                <p class="g-meta">Students • 2025</p>
+                <p class="g-desc">Visiting a campus in 2025 to connect with students and faculty. These engagements help bridge the gap between academic learning and the expectations of the tech industry today.</p>
               </div>
-            </a>
+            </div>
 
             <!-- 8 -->
-            <a
-              class="g-item"
-              data-cat="speaker"
-              href="v2/assets/images/gallery8.jpeg"
-              data-lightbox="gallery"
-              data-title="Speaker from Timedoor on Review Kurikulum & Pengembangan Keprofesian Guru SMK TI Bali Global, July 2025"
-            >
-              <span class="badge-pill">Speaker</span>
-              <img
-                class="g-img"
-                loading="lazy"
-                decoding="async"
-                src="v2/assets/images/gallery8.jpeg"
-                alt="Speaker session – SMK TI Bali Global, July 2025"
-              />
-              <div class="overlay">
-                <div class="caption">
-                  <h3>Curriculum Review</h3>
-                  <span class="meta">Speaker • July 2025</span>
-                </div>
+            <div class="g-item" data-cat="speaker">
+              <a class="g-img-wrap" href="v2/assets/images/gallery8.jpeg"
+                data-lightbox="gallery"
+                data-title="Speaker from Timedoor on Review Kurikulum & Pengembangan Keprofesian Guru SMK TI Bali Global, July 2025">
+                <span class="badge-pill">Speaker</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery8.jpeg"
+                  alt="Speaker session – SMK TI Bali Global, July 2025" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Curriculum Review – SMK TI Bali Global</h3>
+                <p class="g-meta">Speaker • July 2025</p>
+                <p class="g-desc">Invited as a speaker from Timedoor to contribute to the vocational curriculum review and professional development program for IT teachers at SMK TI Bali Global — helping align school curricula with current industry standards.</p>
               </div>
-            </a>
+            </div>
 
             <!-- 9 -->
-            <a
-              class="g-item"
-              data-cat="visiting"
-              href="v2/assets/images/gallery10.jpeg"
-              data-lightbox="gallery"
-              data-title="Take a picture with students (Campus Visit) 2025"
-            >
-              <span class="badge-pill">Visiting</span>
-              <img
-                class="g-img"
-                loading="lazy"
-                decoding="async"
-                src="v2/assets/images/gallery10.jpeg"
-                alt="Campus Visit 2025 group photo"
-              />
-              <div class="overlay">
-                <div class="caption">
-                  <h3>Campus Session</h3>
-                  <span class="meta">2025</span>
-                </div>
+            <div class="g-item" data-cat="visiting">
+              <a class="g-img-wrap" href="v2/assets/images/gallery10.jpeg"
+                data-lightbox="gallery"
+                data-title="Take a picture with students (Campus Visit) 2025">
+                <span class="badge-pill">Visiting</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery10.jpeg"
+                  alt="Campus Visit 2025 group photo" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Campus Session</h3>
+                <p class="g-meta">Students • 2025</p>
+                <p class="g-desc">Wrapping up a campus session with a group photo alongside enthusiastic students. Moments like these are a reminder of why mentoring and knowledge-sharing matter beyond the classroom.</p>
               </div>
-            </a>
+            </div>
 
             <!-- 10 -->
-            <a
-              class="g-item"
-              data-cat="workshop"
-              href="v2/assets/images/gallery9.jpeg"
-              data-lightbox="gallery"
-              data-title="As Supervisor on Mini Credential – Laravel Security (Sawah Security x Timedoor) at PNB, July 2025"
-            >
-              <span class="badge-pill">Workshop</span>
-              <img
-                class="g-img"
-                loading="lazy"
-                decoding="async"
-                src="v2/assets/images/gallery9.jpeg"
-                alt="Collab workshop – Laravel Security at PNB, July 2025"
-              />
-              <div class="overlay">
-                <div class="caption">
-                  <h3>Laravel Security</h3>
-                  <span class="meta">PNB • July 2025</span>
-                </div>
+            <div class="g-item" data-cat="workshop">
+              <a class="g-img-wrap" href="v2/assets/images/gallery9.jpeg"
+                data-lightbox="gallery"
+                data-title="As Supervisor on Mini Credential – Laravel Security (Sawah Security x Timedoor) at PNB, July 2025">
+                <span class="badge-pill">Workshop</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery9.jpeg"
+                  alt="Collab workshop – Laravel Security at PNB, July 2025" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Laravel Security – Mini Credential</h3>
+                <p class="g-meta">Workshop Supervisor • PNB • July 2025</p>
+                <p class="g-desc">Serving as supervisor for a Mini Credential workshop on Laravel Security, a collaboration between Sawah Security and Timedoor at Politeknik Negeri Bali. Participants gained hands-on experience in securing web applications from real-world threats.</p>
               </div>
-            </a>
+            </div>
+
           </div>
         </div>
       </section>
@@ -480,9 +408,7 @@
     <!-- Lightbox2 JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
 
-    <!-- Gallery behavior -->
     <script>
-      // Configure Lightbox2 (if loaded)
       if (window.lightbox) {
         lightbox.option({
           fadeDuration: 180,
@@ -493,7 +419,6 @@
         });
       }
 
-      // Simple filtering
       (function () {
         const chips = document.querySelectorAll(".gallery-pro .chip");
         const items = document.querySelectorAll(".gallery-pro .g-item");

@@ -11,9 +11,9 @@
           <div class="col-lg-7">
             <div class="intro">
               <span class="eyebrow"><i class="fa-solid fa-code"></i> Software Engineer</span>
-              <h1 class="title">Hi, I'm Deva — I build reliable backends and admin dashboards for real products.</h1>
+              <h1 class="title">Hi, I'm Deva — a software engineer focused on backend systems and growing through real product work.</h1>
               <p class="subtitle">
-                Focused on APIs, data models, and integrations. Comfortable jumping into new tools fast,
+                Focused on APIs, data models, and integrations. Comfortable learning new tools quickly,
                 collaborating with mobile teams, and shipping clean, maintainable code.
               </p>
               <div class="d-flex gap-2">
