@@ -37,6 +37,10 @@
               @click="openLightbox(idx)"
             >
               <span class="badge-pill">{{ item.badge }}</span>
+              <span v-if="item.images?.length && item.images.length > 1" class="multi-pill" :aria-label="`${item.images.length} images in this gallery`">
+                <i class="fa-solid fa-images" aria-hidden="true"></i>
+                {{ item.images.length }}
+              </span>
               <img class="g-img" loading="lazy" decoding="async" :src="item.src" :alt="item.alt" />
             </button>
             <div class="g-body">
@@ -69,11 +73,41 @@ interface GalleryItem {
   title: string
   meta: string
   desc: string
-  lightboxTitle: string
+  lightboxTitle?: string
+  images?: Array<{ src: string; title: string }>
   cat: string
 }
 
 const allItems: GalleryItem[] = [
+  {
+    src: '/images/gallery11.jpg',
+    alt: 'Speaking at the GDG Bali Monthly Tech Event',
+    badge: 'Speaker',
+    title: 'GDG Bali Monthly Tech Event',
+    meta: 'Speaker • GDG Bali • Jul 2026',
+    desc: 'Speaking at the Google Developer Group (GDG) Bali Monthly Tech Event and sharing practical insights with the local tech community.',
+    images: [
+      {
+        src: '/images/gallery11.jpg',
+        title: 'Speaking at the GDG Bali Monthly Tech Event, July 2026',
+      },
+      {
+        src: '/images/gallery12.png',
+        title: 'Another moment from the same GDG Bali Monthly Tech Event, July 2026',
+      },
+    ],
+    cat: 'speaker',
+  },
+  {
+    src: '/images/gallery8.jpeg',
+    alt: 'Speaker session – SMK TI Bali Global, July 2025',
+    badge: 'Speaker',
+    title: 'Curriculum Review – SMK TI Bali Global',
+    meta: 'Speaker • July 2025',
+    desc: 'Invited as a speaker from Timedoor to contribute to the vocational curriculum review and professional development program for IT teachers at SMK TI Bali Global — helping align school curricula with current industry standards.',
+    lightboxTitle: 'Speaker from Timedoor on Review Kurikulum & Pengembangan Keprofesian Guru SMK TI Bali Global, July 2025',
+    cat: 'speaker',
+  },
   {
     src: '/images/gallery1.jpg',
     alt: 'Campus Visit with students',
@@ -145,16 +179,6 @@ const allItems: GalleryItem[] = [
     cat: 'visiting',
   },
   {
-    src: '/images/gallery8.jpeg',
-    alt: 'Speaker session – SMK TI Bali Global, July 2025',
-    badge: 'Speaker',
-    title: 'Curriculum Review – SMK TI Bali Global',
-    meta: 'Speaker • July 2025',
-    desc: 'Invited as a speaker from Timedoor to contribute to the vocational curriculum review and professional development program for IT teachers at SMK TI Bali Global — helping align school curricula with current industry standards.',
-    lightboxTitle: 'Speaker from Timedoor on Review Kurikulum & Pengembangan Keprofesian Guru SMK TI Bali Global, July 2025',
-    cat: 'speaker',
-  },
-  {
     src: '/images/gallery10.jpeg',
     alt: 'Campus Visit 2025 group photo',
     badge: 'Visiting',
@@ -191,10 +215,12 @@ const filteredItems = computed(() =>
 
 const lightboxVisible = ref(false)
 const lightboxIndex = ref(0)
-const lightboxImgs = computed(() => filteredItems.value.map(i => ({ src: i.src, title: i.lightboxTitle })))
+const lightboxImgs = ref<Array<{ src: string; title: string }>>([])
 
 function openLightbox(idx: number) {
-  lightboxIndex.value = idx
+  const item = filteredItems.value[idx]
+  lightboxImgs.value = item.images ?? [{ src: item.src, title: item.lightboxTitle ?? item.title }]
+  lightboxIndex.value = 0
   lightboxVisible.value = true
 }
 </script>
@@ -223,6 +249,7 @@ function openLightbox(idx: number) {
 .g-img { display: block; width: 100%; height: auto; aspect-ratio: 16/10; object-fit: cover; filter: saturate(1.06) contrast(1.04); transform: scale(1.02); transition: transform 0.35s ease; }
 .g-item:hover .g-img { transform: scale(1.065); }
 .badge-pill { position: absolute; top: 12px; left: 12px; z-index: 2; background: linear-gradient(180deg,var(--accent),#3b86ff); color: #fff; font-weight: 800; letter-spacing: 0.2px; font-size: 12px; padding: 6px 10px; border-radius: 999px; box-shadow: 0 6px 18px rgba(13,110,253,0.25); pointer-events: none; }
+.multi-pill { position: absolute; top: 12px; right: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 6px; background: rgba(17,24,39,0.82); color: #fff; font-weight: 800; letter-spacing: 0.2px; font-size: 12px; padding: 6px 10px; border-radius: 999px; box-shadow: 0 6px 18px rgba(15,23,42,0.22); pointer-events: none; }
 .g-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
 .g-title { font-size: 15px; font-weight: 800; color: var(--text); margin: 0; }
 .g-meta { font-size: 12px; color: var(--accent); font-weight: 600; margin: 0; }

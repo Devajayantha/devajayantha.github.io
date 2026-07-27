@@ -134,6 +134,24 @@
         box-shadow: 0 6px 18px rgba(13, 110, 253, 0.25);
         pointer-events: none;
       }
+      .gallery-pro .multi-pill {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(17, 24, 39, 0.82);
+        color: #fff;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.22);
+        pointer-events: none;
+      }
 
       /* Always-visible card body */
       .gallery-pro .g-body {
@@ -228,125 +246,32 @@
           <div class="gallery-grid" id="gallery">
 
             <!-- 1 -->
-            <div class="g-item" data-cat="visiting">
-              <a class="g-img-wrap" href="v2/assets/images/gallery1.jpg"
-                data-lightbox="gallery"
-                data-title="Take a picture with students (Campus Visit)">
-                <span class="badge-pill">Visiting</span>
+            <div class="g-item" data-cat="speaker">
+              <a class="g-img-wrap" href="public/images/gallery11.jpg"
+                data-lightbox="gdg-bali-event"
+                data-title="Speaking at the GDG Bali Monthly Tech Event, July 2026">
+                <span class="badge-pill">Speaker</span>
+                <span class="multi-pill" aria-label="2 images in this gallery">
+                  <i class="fa-solid fa-images" aria-hidden="true"></i>
+                  2
+                </span>
                 <img class="g-img" loading="lazy" decoding="async"
-                  src="v2/assets/images/gallery1.jpg"
-                  alt="Campus Visit with students" />
+                  src="public/images/gallery11.jpg"
+                  alt="Speaking at the GDG Bali Monthly Tech Event" />
               </a>
+              <a href="public/images/gallery12.png"
+                data-lightbox="gdg-bali-event"
+                data-title="Another moment from the same GDG Bali Monthly Tech Event, July 2026"
+                style="display: none"
+                aria-hidden="true"></a>
               <div class="g-body">
-                <h3 class="g-title">Campus Visit</h3>
-                <p class="g-meta">Students • 2025</p>
-                <p class="g-desc">A fun moment capturing a group photo with students during a campus visit. These visits are opportunities to share industry insights and inspire the next generation of tech professionals.</p>
+                <h3 class="g-title">GDG Bali Monthly Tech Event</h3>
+                <p class="g-meta">Speaker • GDG Bali • Jul 2026</p>
+                <p class="g-desc">Speaking at the Google Developer Group (GDG) Bali Monthly Tech Event and sharing practical insights with the local tech community.</p>
               </div>
             </div>
 
             <!-- 2 -->
-            <div class="g-item" data-cat="training">
-              <a class="g-img-wrap" href="v2/assets/images/gallery2.jpeg"
-                data-lightbox="gallery"
-                data-title="Digitirta training at Semarang, July 2023">
-                <span class="badge-pill">Trainer</span>
-                <img class="g-img" loading="lazy" decoding="async"
-                  src="v2/assets/images/gallery2.jpeg"
-                  alt="Digitirta training at Semarang, July 2023" />
-              </a>
-              <div class="g-body">
-                <h3 class="g-title">Digitirta – Semarang</h3>
-                <p class="g-meta">Trainer • July 2023</p>
-                <p class="g-desc">Conducting a hands-on training session for Digitirta participants in Semarang. The program focused on practical digital skills to help participants grow their capabilities in the tech industry.</p>
-              </div>
-            </div>
-
-            <!-- 3 -->
-            <div class="g-item" data-cat="training">
-              <a class="g-img-wrap" href="v2/assets/images/gallery3.jpeg"
-                data-lightbox="gallery"
-                data-title="Digitirta training at Yogyakarta, July 2024">
-                <span class="badge-pill">Trainer</span>
-                <img class="g-img" loading="lazy" decoding="async"
-                  src="v2/assets/images/gallery3.jpeg"
-                  alt="Digitirta training at Yogyakarta, July 2024" />
-              </a>
-              <div class="g-body">
-                <h3 class="g-title">Digitirta – Yogyakarta</h3>
-                <p class="g-meta">Trainer • July 2024</p>
-                <p class="g-desc">Leading a Digitirta training session in Yogyakarta, delivering structured learning on software development fundamentals. A memorable batch full of enthusiasm and curiosity.</p>
-              </div>
-            </div>
-
-            <!-- 4 -->
-            <div class="g-item" data-cat="visiting">
-              <a class="g-img-wrap" href="v2/assets/images/gallery4.png"
-                data-lightbox="gallery"
-                data-title="Sharing session with students (Campus Visit)">
-                <span class="badge-pill">Visiting</span>
-                <img class="g-img" loading="lazy" decoding="async"
-                  src="v2/assets/images/gallery4.png"
-                  alt="Sharing session with students" />
-              </a>
-              <div class="g-body">
-                <h3 class="g-title">Sharing Session</h3>
-                <p class="g-meta">Campus Visit</p>
-                <p class="g-desc">An interactive sharing session with students at a campus visit, discussing real-world career paths in tech, what it takes to land a job, and how to build relevant skills while still studying.</p>
-              </div>
-            </div>
-
-            <!-- 5 -->
-            <div class="g-item" data-cat="training">
-              <a class="g-img-wrap" href="v2/assets/images/gallery5.jpeg"
-                data-lightbox="gallery"
-                data-title="Digitirta training at Yogyakarta, July 2024">
-                <span class="badge-pill">Trainer</span>
-                <img class="g-img" loading="lazy" decoding="async"
-                  src="v2/assets/images/gallery5.jpeg"
-                  alt="Digitirta training group photo" />
-              </a>
-              <div class="g-body">
-                <h3 class="g-title">Digitirta – Yogyakarta</h3>
-                <p class="g-meta">Trainer • July 2024</p>
-                <p class="g-desc">Group photo with Digitirta trainees in Yogyakarta at the end of the program. It's always rewarding to see participants grow in confidence and technical ability throughout the training.</p>
-              </div>
-            </div>
-
-            <!-- 6 -->
-            <div class="g-item" data-cat="training">
-              <a class="g-img-wrap" href="v2/assets/images/gallery6.png"
-                data-lightbox="gallery"
-                data-title="Digitirta training with Water.org & Government at Tangerang, September 2024">
-                <span class="badge-pill">Trainer</span>
-                <img class="g-img" loading="lazy" decoding="async"
-                  src="v2/assets/images/gallery6.png"
-                  alt="Training with Water.org & Government at Tangerang, Sept 2024" />
-              </a>
-              <div class="g-body">
-                <h3 class="g-title">Water.org & Government Training</h3>
-                <p class="g-meta">Trainer • Tangerang • Sep 2024</p>
-                <p class="g-desc">A collaborative training initiative with Water.org and local government officials in Tangerang. The session aimed to digitize workflows and strengthen digital literacy among public sector participants.</p>
-              </div>
-            </div>
-
-            <!-- 7 -->
-            <div class="g-item" data-cat="visiting">
-              <a class="g-img-wrap" href="v2/assets/images/gallery7.jpg"
-                data-lightbox="gallery"
-                data-title="Take a picture with students (Campus Visit) 2025">
-                <span class="badge-pill">Visiting</span>
-                <img class="g-img" loading="lazy" decoding="async"
-                  src="v2/assets/images/gallery7.jpg"
-                  alt="Campus Visit 2025" />
-              </a>
-              <div class="g-body">
-                <h3 class="g-title">Campus Visit</h3>
-                <p class="g-meta">Students • 2025</p>
-                <p class="g-desc">Visiting a campus in 2025 to connect with students and faculty. These engagements help bridge the gap between academic learning and the expectations of the tech industry today.</p>
-              </div>
-            </div>
-
-            <!-- 8 -->
             <div class="g-item" data-cat="speaker">
               <a class="g-img-wrap" href="v2/assets/images/gallery8.jpeg"
                 data-lightbox="gallery"
@@ -363,7 +288,126 @@
               </div>
             </div>
 
+            <!-- 3 -->
+            <div class="g-item" data-cat="visiting">
+              <a class="g-img-wrap" href="v2/assets/images/gallery1.jpg"
+                data-lightbox="gallery"
+                data-title="Take a picture with students (Campus Visit)">
+                <span class="badge-pill">Visiting</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery1.jpg"
+                  alt="Campus Visit with students" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Campus Visit</h3>
+                <p class="g-meta">Students • 2025</p>
+                <p class="g-desc">A fun moment capturing a group photo with students during a campus visit. These visits are opportunities to share industry insights and inspire the next generation of tech professionals.</p>
+              </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="g-item" data-cat="training">
+              <a class="g-img-wrap" href="v2/assets/images/gallery2.jpeg"
+                data-lightbox="gallery"
+                data-title="Digitirta training at Semarang, July 2023">
+                <span class="badge-pill">Trainer</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery2.jpeg"
+                  alt="Digitirta training at Semarang, July 2023" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Digitirta – Semarang</h3>
+                <p class="g-meta">Trainer • July 2023</p>
+                <p class="g-desc">Conducting a hands-on training session for Digitirta participants in Semarang. The program focused on practical digital skills to help participants grow their capabilities in the tech industry.</p>
+              </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="g-item" data-cat="training">
+              <a class="g-img-wrap" href="v2/assets/images/gallery3.jpeg"
+                data-lightbox="gallery"
+                data-title="Digitirta training at Yogyakarta, July 2024">
+                <span class="badge-pill">Trainer</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery3.jpeg"
+                  alt="Digitirta training at Yogyakarta, July 2024" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Digitirta – Yogyakarta</h3>
+                <p class="g-meta">Trainer • July 2024</p>
+                <p class="g-desc">Leading a Digitirta training session in Yogyakarta, delivering structured learning on software development fundamentals. A memorable batch full of enthusiasm and curiosity.</p>
+              </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="g-item" data-cat="visiting">
+              <a class="g-img-wrap" href="v2/assets/images/gallery4.png"
+                data-lightbox="gallery"
+                data-title="Sharing session with students (Campus Visit)">
+                <span class="badge-pill">Visiting</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery4.png"
+                  alt="Sharing session with students" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Sharing Session</h3>
+                <p class="g-meta">Campus Visit</p>
+                <p class="g-desc">An interactive sharing session with students at a campus visit, discussing real-world career paths in tech, what it takes to land a job, and how to build relevant skills while still studying.</p>
+              </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="g-item" data-cat="training">
+              <a class="g-img-wrap" href="v2/assets/images/gallery5.jpeg"
+                data-lightbox="gallery"
+                data-title="Digitirta training at Yogyakarta, July 2024">
+                <span class="badge-pill">Trainer</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery5.jpeg"
+                  alt="Digitirta training group photo" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Digitirta – Yogyakarta</h3>
+                <p class="g-meta">Trainer • July 2024</p>
+                <p class="g-desc">Group photo with Digitirta trainees in Yogyakarta at the end of the program. It's always rewarding to see participants grow in confidence and technical ability throughout the training.</p>
+              </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="g-item" data-cat="training">
+              <a class="g-img-wrap" href="v2/assets/images/gallery6.png"
+                data-lightbox="gallery"
+                data-title="Digitirta training with Water.org & Government at Tangerang, September 2024">
+                <span class="badge-pill">Trainer</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery6.png"
+                  alt="Training with Water.org & Government at Tangerang, Sept 2024" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Water.org & Government Training</h3>
+                <p class="g-meta">Trainer • Tangerang • Sep 2024</p>
+                <p class="g-desc">A collaborative training initiative with Water.org and local government officials in Tangerang. The session aimed to digitize workflows and strengthen digital literacy among public sector participants.</p>
+              </div>
+            </div>
+
             <!-- 9 -->
+            <div class="g-item" data-cat="visiting">
+              <a class="g-img-wrap" href="v2/assets/images/gallery7.jpg"
+                data-lightbox="gallery"
+                data-title="Take a picture with students (Campus Visit) 2025">
+                <span class="badge-pill">Visiting</span>
+                <img class="g-img" loading="lazy" decoding="async"
+                  src="v2/assets/images/gallery7.jpg"
+                  alt="Campus Visit 2025" />
+              </a>
+              <div class="g-body">
+                <h3 class="g-title">Campus Visit</h3>
+                <p class="g-meta">Students • 2025</p>
+                <p class="g-desc">Visiting a campus in 2025 to connect with students and faculty. These engagements help bridge the gap between academic learning and the expectations of the tech industry today.</p>
+              </div>
+            </div>
+
+            <!-- 10 -->
             <div class="g-item" data-cat="visiting">
               <a class="g-img-wrap" href="v2/assets/images/gallery10.jpeg"
                 data-lightbox="gallery"
@@ -380,7 +424,7 @@
               </div>
             </div>
 
-            <!-- 10 -->
+            <!-- 11 -->
             <div class="g-item" data-cat="workshop">
               <a class="g-img-wrap" href="v2/assets/images/gallery9.jpeg"
                 data-lightbox="gallery"
